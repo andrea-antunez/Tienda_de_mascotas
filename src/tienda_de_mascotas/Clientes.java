@@ -1,5 +1,7 @@
 package tienda_de_mascotas;
 
+import java.util.Scanner;
+
 public class Clientes {
     private String nombre;
     private String telefono;
@@ -61,6 +63,62 @@ public class Clientes {
 
     public void setCliente_regular(boolean cliente_regular) {
         this.cliente_regular = cliente_regular;
+    }
+    
+    @Override
+    public String toString(){
+        String infoMascotas = "";
+        for (int i = 0; i < numero_mascotas; i++){
+            infoMascotas += (i+1)+". ";
+            infoMascotas += mascotas[i];
+            if (i!=numero_mascotas-1){
+                infoMascotas += ", ";
+            }
+        }
+        
+        return "Cliente{"+
+                "nombre='" + nombre + '\''+
+                ", telefono='" + telefono + '\''+
+                ", correo='" + correo + '\''+
+                ", numero de mascotas=" + numero_mascotas +
+                ", mascotas=[" + infoMascotas + "]" +
+                ", cliente regular=" + cliente_regular + 
+                "}";
+    }
+    
+    public Clientes[] registro(Clientes clientes[], int num_clientes){
+        Scanner leer = new Scanner (System.in);
+        Clientes nuevo_clientes [] = new Clientes [num_clientes + 1];
+        for(int i = 0; i < num_clientes; i++){
+            nuevo_clientes[i] = clientes[i];
+        }
+        System.out.println("Ingrese su nombre:");
+        String nombre = leer.nextLine();
+        System.out.println("Ingese su numero de telefono:");
+        String telefono = leer.nextLine();
+        System.out.println("Ingese su correo electronico:");
+        String correo = leer.nextLine();
+        nuevo_clientes [num_clientes] = new Clientes (nombre, telefono, correo);
+        return nuevo_clientes;
+    }
+    
+    public void comprarMascota(Mascotas [] disponibles, int mascota){
+        Mascotas[] nuevoMascotas = new Mascotas [numero_mascotas+1];
+        for (int i = 0; i < numero_mascotas; i++){
+            nuevoMascotas [i] = mascotas [i];
+        }
+        nuevoMascotas[numero_mascotas] = disponibles[mascota];
+        this.numero_mascotas = numero_mascotas + 1;
+        this.mascotas = nuevoMascotas;
+        System.out.println(nombre+" ha comprado a "+disponibles[mascota].getNombre()+" por L."+disponibles[mascota].getPrecio());
+        for (int i = mascota; i < disponibles.length; i++){
+            if (i!= disponibles.length-1){
+                disponibles[i] = disponibles[i+1];
+            }
+            else{
+                disponibles[i-1] = null;
+            }
+        }
     }
     
     

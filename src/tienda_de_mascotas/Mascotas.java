@@ -1,5 +1,7 @@
 package tienda_de_mascotas;
 
+import java.util.Scanner;
+
 public class Mascotas {
     private String nombre;
     private String especie;
@@ -75,5 +77,46 @@ public class Mascotas {
         this.precio = precio;
     }
     
+    @Override
+    public String toString(){
+        return "Mascota{"+
+                "nombre='" + nombre + '\''+
+                ", especie='" + especie + '\''+
+                ", raza='" + raza + '\''+
+                ", color='" + color + '\''+
+                ", edad=" + edad +
+                ", peso=" + peso +
+                ", precio=" + precio + 
+                "}";
+    }
     
+    public void renombrar(Mascotas mascota){
+        Scanner leer = new Scanner(System.in);
+        System.out.println("Que nombre deseas ponerle a tu nueva mascota?");
+        String nombre = leer.nextLine();
+        mascota.setNombre(nombre);
+        System.out.println("Felicidades, ahora eres dueño de "+this.nombre);
+    }
+    
+    public void mostrar(Mascotas mascota){
+        System.out.println(nombre);
+        System.out.println("Especie: " + especie);
+        System.out.println("Raza: " + raza);
+        System.out.println("Color: " + color);
+        System.out.println("Edad: " + edad);
+        System.out.println("Peso: " + peso);
+        System.out.println("Precio: " + precio);
+    }
+    
+    public void listar(Mascotas disponibles []){
+        System.out.println("Mascotas disponibles:");
+        System.out.println();
+        for(int i = 0; i < disponibles.length; i++){
+            if (disponibles[i]!=null){
+                System.out.print((i+1)+")");
+                disponibles[i].mostrar(disponibles[i]);
+                System.out.println();
+            }
+        }
+    }
 }
