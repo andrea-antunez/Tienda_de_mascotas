@@ -90,6 +90,40 @@ public class Mascotas {
                 "}";
     }
     
+    public void agregar(Mascotas disponibles []){
+        Scanner leer = new Scanner (System.in);
+        boolean espacio = false;
+        byte num = 0;
+        for (byte i = 0; i < disponibles.length; i++){
+            if (disponibles[i] == null){
+                espacio = true;
+                num = i;
+                break;
+            }
+        }
+        if (espacio){
+            System.out.println("Ingrese el nombre:");
+            String nombre = leer.nextLine();
+            System.out.println("Ingese la especie:");
+            String especie = leer.nextLine();
+            System.out.println("Ingese la raza:");
+            String raza = leer.nextLine();
+            System.out.println("Ingese el color:");
+            String color = leer.nextLine();
+            System.out.println("Ingese la edad:");
+            int edad = leer.nextInt();
+            System.out.println("Ingese el peso:");
+            double peso = leer.nextDouble();
+            System.out.println("Ingese el precio:");
+            double precio = leer.nextDouble();
+            disponibles[num] = new Mascotas (nombre, especie, raza, color, edad, peso, precio);
+        }
+        else{
+            System.out.println("No hay espacio para otra mascota");
+        }
+        
+    }
+    
     public void renombrar(Mascotas mascota){
         Scanner leer = new Scanner(System.in);
         System.out.println("Que nombre deseas ponerle a tu nueva mascota?");
@@ -100,12 +134,12 @@ public class Mascotas {
     
     public void mostrar(Mascotas mascota){
         System.out.println(nombre);
-        System.out.println("Especie: " + especie);
-        System.out.println("Raza: " + raza);
-        System.out.println("Color: " + color);
-        System.out.println("Edad: " + edad);
-        System.out.println("Peso: " + peso);
-        System.out.println("Precio: " + precio);
+        System.out.println("-Especie: " + especie);
+        System.out.println("-Raza: " + raza);
+        System.out.println("-Color: " + color);
+        System.out.println("-Edad: " + edad);
+        System.out.println("-Peso: " + peso);
+        System.out.println("-Precio: " + precio);
     }
     
     public void listar(Mascotas disponibles []){

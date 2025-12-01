@@ -8,13 +8,12 @@ public class Clientes {
     private String correo;
     private int numero_mascotas;
     private Mascotas [] mascotas;
-    private boolean cliente_regular;
+    private double gastos;
 
     public Clientes(String nombre, String telefono, String correo) {
         this.nombre = nombre;
         this.telefono = telefono;
         this.correo = correo;
-        this.cliente_regular = false;
     }
 
     public String getNombre() {
@@ -57,12 +56,12 @@ public class Clientes {
         this.mascotas = mascotas;
     }
 
-    public boolean isCliente_regular() {
-        return cliente_regular;
+    public double getGastos() {
+        return gastos;
     }
 
-    public void setCliente_regular(boolean cliente_regular) {
-        this.cliente_regular = cliente_regular;
+    public void setGastos(double gastos) {
+        this.gastos = gastos;
     }
     
     @Override
@@ -82,7 +81,7 @@ public class Clientes {
                 ", correo='" + correo + '\''+
                 ", numero de mascotas=" + numero_mascotas +
                 ", mascotas=[" + infoMascotas + "]" +
-                ", cliente regular=" + cliente_regular + 
+                ", gastos=" + gastos + 
                 "}";
     }
     
@@ -111,6 +110,7 @@ public class Clientes {
         this.numero_mascotas = numero_mascotas + 1;
         this.mascotas = nuevoMascotas;
         System.out.println(nombre+" ha comprado a "+disponibles[mascota].getNombre()+" por L."+disponibles[mascota].getPrecio());
+        gastos += disponibles[mascota].getPrecio();
         for (int i = mascota; i < disponibles.length; i++){
             if (i!= disponibles.length-1){
                 disponibles[i] = disponibles[i+1];
