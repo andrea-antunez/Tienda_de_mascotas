@@ -105,9 +105,17 @@ public class Tienda_de_mascotas {
                                 System.out.println("");
                                 if (opcion2 == 's' || opcion2 == 'S'){
                                     ingresos += mascotas_disponibles[num-1].getPrecio();
+                                    System.out.println("Desea renombrar su nueva mascota?");
+                                    System.out.print("(S/N): ");
+                                    opcion2 = leer.next().charAt(0);
+                                    if (opcion2 == 's' || opcion2 == 'S'){
+                                        mascotas_disponibles[num-1].renombrar(mascotas_disponibles[num-1]);
+                                    }
+                                    System.out.println("");
                                     cliente_actual.comprarMascota(mascotas_disponibles, num-1);
                                 }
                                 System.out.println("");
+                                
                                 break;
 
                             default:
@@ -136,13 +144,6 @@ public class Tienda_de_mascotas {
                     break;
             }
         }while(loop);
-        
-        /*Prueba
-        mascotas_disponibles[0].mostrar(mascotas_disponibles[0]);
-        clientes[0].comprarMascota(mascotas_disponibles,1);
-        System.out.println(clientes[0].toString());
-        mascotas_disponibles[0].renombrar(mascotas_disponibles[0]);
-        mascotas_disponibles[0].listar(mascotas_disponibles);*/
     }
     
 }

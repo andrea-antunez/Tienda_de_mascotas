@@ -129,7 +129,7 @@ public class Mascotas {
         System.out.println("Que nombre deseas ponerle a tu nueva mascota?");
         String nombre = leer.nextLine();
         mascota.setNombre(nombre);
-        System.out.println("Felicidades, ahora eres dueño de "+this.nombre);
+        System.out.println("Felicidades, ahora eres duenio de "+this.nombre);
     }
     
     public void mostrar(Mascotas mascota){
